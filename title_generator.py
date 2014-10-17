@@ -2,23 +2,24 @@
 
 import sys, re, random
 
-noun = ["regent", "officer", "chief", "engineer", "overlord"]
-adj = ["grand", "high", "master", "electronics", "firmware", "chief", "super", "<adj> <adj>"]
-ofnoun = ["FWEE", "kings", "things", "<adj> <ofnoun>", "stuffed tortoises"]
-nounphrase = ["<adj> <noun>", "<noun> of <ofnoun>", "<noun>", "<adj> <nounphrase>"]
+titlenoun = ["regent", "programmer", "officer", "chief", "engineer", "overlord", "cowboy", "supervisor"]
+adj = ["grand", "high", "master", "electronics", "firmware", "chief", "super", "head", "executive", "<adj> <adj>"]
+ofnoun = ["bugs", "FWEE", "kings", "things", "<adj> <ofnoun>", "stuffed tortoises", "food"]
+modifier = ["riding off into the night", "lover of <ofnoun>"]
+nounphrase = ["<adj> <titlenoun>", "<titlenoun> of <ofnoun>", "<titlenoun>", "<adj> <nounphrase>", "<nounphrase>, <modifier>"]
 
 modobj = sys.modules[globals()['__name__']]
 
 def expand_title(asdf):
     parts = []
     for s in asdf.split():
-        matchobj = re.search('<(\w*)>', s)
+        matchobj = re.search('<(\w*)>(.?)', s)
         if matchobj:
             l = getattr(modobj, matchobj.group(1))
             rstr = random.choice(l)
-            parts.append(expand_title(rstr)) # recurse!
+            parts.append(expand_title(rstr) + matchobj.group(2)) # recurse!
         else: parts.append(s)
     return ' '.join(parts) # Stick it all together again
 
-print expand_title("<nounphrase>")
+for i in xrange(0, 20): print expand_title("<nounphrase>")
 
