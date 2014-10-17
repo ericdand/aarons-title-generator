@@ -21,5 +21,7 @@ def expand_title(asdf):
         else: parts.append(s)
     return ' '.join(parts) # Stick it all together again
 
-for i in xrange(0, 20): print expand_title("<nounphrase>")
+if len(sys.argv) > 1: 
+    for i in xrange(0, int(sys.argv[1])): print expand_title("<nounphrase>")
+else: print expand_title("<nounphrase>")
 
