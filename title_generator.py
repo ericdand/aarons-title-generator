@@ -2,11 +2,10 @@
 
 import sys, re, random
 
-titlenoun = ["regent", "programmer", "officer", "chief", "engineer", "overlord", "cowboy", "supervisor"]
+titlenoun = ["regent", "lover", "programmer", "officer", "chief", "engineer", "overlord", "cowboy", "supervisor", "wrangler"]
 adj = ["grand", "high", "master", "electronics", "firmware", "chief", "super", "head", "executive", "<adj> <adj>"]
-ofnoun = ["bugs", "FWEE", "kings", "things", "<adj> <ofnoun>", "stuffed tortoises", "food"]
-modifier = ["riding off into the night", "lover of <ofnoun>"]
-nounphrase = ["<adj> <titlenoun>", "<titlenoun> of <ofnoun>", "<titlenoun>", "<adj> <nounphrase>", "<nounphrase>, <modifier>"]
+ofnoun = ["bugs", "FWEE", "kings", "things", "<adj> <ofnoun>", "stuffed tortoises", "food", "students"]
+nounphrase = ["<adj> <titlenoun>", "<titlenoun> of <ofnoun>", "<titlenoun>", "<adj> <nounphrase>"]
 
 modobj = sys.modules[globals()['__name__']]
 
